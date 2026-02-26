@@ -1,0 +1,26 @@
+name: Playwright QA Automation
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  scrape-and-sum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install
+
+      - name: Run Playwright Script 23f2005114@ds.study.iitm.ac.in
+        run: python sum_tables.py
